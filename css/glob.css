@@ -275,7 +275,7 @@ header {
         width: 100%;
         max-width: none;
         margin: 0;
-        height: calc(var(--vh) - 10px);
+        height: -webkit-fill-available;
         display: flex;
         flex-direction: column;
     }
