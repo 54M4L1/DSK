@@ -61,14 +61,26 @@ window.onload = () => {
             console.error('❌ Error connecting to Phantom wallet:', error);
         }
     };
-    function updateVh() {
-        let vh = window.innerHeight * 0.01;
+let previousHeight = window.innerHeight;
+
+function updateVh() {
+    let currentHeight = window.innerHeight;
+
+    // إذا كان الفرق كبيرًا، فالمشكلة بسبب لوحة المفاتيح
+    let isKeyboardOpen = previousHeight - currentHeight > 150; // 150px هو متوسط ارتفاع شريط الأدوات
+
+    if (!isKeyboardOpen) {
+        let vh = currentHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}rem`);
     }
 
-    // تحديث `vh` عند تحميل الصفحة وعند تغيير حجم الشاشة
-    window.addEventListener('resize', updateVh);
-    updateVh();
+    previousHeight = currentHeight;
+}
+
+// تحديث `vh` عند تغيير حجم الشاشة
+window.addEventListener('resize', updateVh);
+updateVh();
+
 
 
     // Attach function to connect button
