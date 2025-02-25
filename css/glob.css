@@ -72,14 +72,14 @@ header {
     height: -webkit-fill-available;
     z-index: 1;
     border: 1px solid transparent;
-    border-image: linear-gradient(to top, #ff66b2, #9b59b6, #00abff) 1;
+    border-image: linear-gradient(to top, #66ceff, #5981b6, #2bb9ff) 1;
 }
 
 .chat-box {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
-    border-bottom: 1px solid #ff66b2;
+    border-bottom: 2px solid #63bff1;
 }
 
 .message {
@@ -129,20 +129,22 @@ header {
 
 #user-input {
     flex: 1;
-    padding: 10px;
-    background-color: #2b2a2a;
-    border: 1px solid #ff66b2;
+    padding: 5px;
+    background-color: #3c3c3c;
+    border: 1px solid #ff000000;
     color: #ffffff;
     border-radius: 4px;
     margin-right: 10px;
 }
 
 #send-btn {
-    padding: 10px 20px;
-    background-color: #ff66b2;
+    background-color: #66ceff;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 100%;
     cursor: pointer;
 }
 
@@ -150,13 +152,20 @@ header {
         background-color: #ccc;
         cursor: not-allowed;
     }
-
+    #send-btn:hover {
+        background-color: #6f98df;
+    }
 .loading {
     display: none;
+    position: relative;
+    background-color: #00abff;
     text-align: center;
-    padding: 10px;
-    color: #00abff;
+    padding: 6px;
+    color: white;
 }
+    .loading.show {
+        display: block;
+    }
 .custom-file-container {
     position: fixed;
     top: 20px;
@@ -247,6 +256,81 @@ header {
 
 
 
+#open-modal-btn {
+    background: linear-gradient(45deg, #2067dd, #ff00a5);
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+    #open-modal-btn:hover {
+        background: linear-gradient(0deg, #2067dd, #ff00a5);
+    }
+
+/* تنسيق النافذة المنبثقة */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* خلفية مظللة */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #2a2a2aa8;
+    color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+/* زر إغلاق النافذة */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    transition: 0.3s;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* تنسيق الأزرار داخل النافذة المنبثقة */
+.model-btn {
+    background: linear-gradient(0deg, #2067dd, #ff00a5);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+    .model-btn:hover {
+        background: linear-gradient(180deg, #2067dd, #ff00a5);
+    }
+
+
+
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -267,22 +351,33 @@ header {
     display: none;
 }
 
+
+
 @media (max-width: 767px) {
     .chat-container {
         width: 100%;
         max-width: none;
         margin: 0;
-        height: -webkit-fill-available;
+        height: 100%;
     }
 
     .input-container {
         display: flex;
         height: 60px;
         padding: 10px;
+        margin-bottom: 20px;
         color: #00abff;
         background-color: #191a1a;
     }
-
+    #user-input {
+        flex: 1;
+        padding: 30px;
+        background-color: #3c3c3c;
+        border: 1px solid #ff000000;
+        color: #ffffff;
+        border-radius: 4px;
+        margin-left: 1px;
+    }
     .custom-file-container {
         position: fixed;
         top: 10%;

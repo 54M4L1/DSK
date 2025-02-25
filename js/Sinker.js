@@ -2,8 +2,9 @@
 const chatBox = document.getElementById('chat-box');
 const sendBtn = document.getElementById('send-btn');
 const loading = document.getElementById('loading');
-
-
+const openModalBtn = document.getElementById('open-modal-btn');
+const closeModalBtn = document.getElementById('close-modal-btn');
+const modal = document.getElementById('model-modal');
 let conversationHistory = [];
 
 userInput.addEventListener('keypress', function (e) {
@@ -11,6 +12,62 @@ userInput.addEventListener('keypress', function (e) {
         sendMessage();
     }
 });
+
+// فتح النافذة عند الضغط على الزر
+openModalBtn.addEventListener('click', function () {
+    modal.style.display = 'block';
+});
+
+// غلق النافذة عند الضغط على زر الإغلاق
+closeModalBtn.addEventListener('click', function () {
+    modal.style.display = 'none';
+});
+
+// غلق النافذة عند الضغط خارجها
+window.addEventListener('click', function (event) {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+function setModel(modelType) {
+    // إغلاق النافذة بعد اختيار الموديل
+    modal.style.display = 'none';
+
+    // إرسال رسالة تعبر عن اختيار الموديل
+    let modelMessage = '';
+
+    switch (modelType) {
+        case 'physics':
+            modelMessage = "Brace yourself for a journey into the fundamental laws of nature, where energy, matter, and the universe itself become your playground. Let’s unlock the secrets of the cosmos together!";
+            break;
+        case 'space':
+            modelMessage = "Prepare to venture into the vastness of the universe, exploring distant galaxies, black holes, and the mysteries of space-time. The final frontier awaits!";
+            break;
+        case 'chemistry':
+            modelMessage = "Dive into the molecular world, where atoms bond, reactions unfold, and the elements of life come to life. It’s time to stir up some science!";
+            break;
+        case 'spiritual':
+            modelMessage = "Embark on a transcendent journey through the realms of consciousness, mysticism, and inner peace. Let’s explore the deep connections between the mind, body, and spirit.";
+            break;
+        case 'technology':
+            modelMessage = "Get ready to explore the cutting-edge world of innovation, from artificial intelligence to the digital revolution. The future is now, and we’re about to shape it together!";
+            break;
+        case 'funny':
+            modelMessage = "Let’s lighten the mood with some laughter, wit, and humor. Prepare for a good time with jokes, memes, and all-around fun vibes!";
+            break;
+        default:
+            modelMessage = "Oops! Something went wrong. Please select a valid model to begin.";
+    }
+
+
+
+    // إضافة الرسالة إلى سجل المحادثة
+    conversationHistory.push({ sender: 'system', message: modelMessage });
+
+    // يمكنك هنا أيضًا إرسال الرسالة إلى الـ API إذا أردت تحديث النموذج بناءً على الاختيار
+    console.log(`Model selected: ${modelType}`);
+}
 
 async function sendMessage() {
     const message = userInput.value.trim();
@@ -25,7 +82,7 @@ async function sendMessage() {
     if (conversationHistory.length === 0) {
         conversationHistory.push({
             sender: 'system',
-            message: "Interact with me as a scientist and expert in technology, physics and occult, be lovely."
+            message: "Let’s dive into an exciting adventure together! 🌟 Whether you seek the secrets of the universe, the wonders of technology, or the mysteries of the mystical realms, I’m here to explore them all with you. Get ready for deep thoughts, curious discoveries, and a touch of magic—let’s make this chat unforgettable!"
         });
     }
 
@@ -49,7 +106,7 @@ async function sendMessage() {
     appendMessage('user-message', message);
     userInput.value = '';
     sendBtn.disabled = true;
-    loading.style.display = 'block';
+    loading.classList.add('show'); // إظهار التحميل دون تغيير التخطيط
 
     try {
         const response = await puter.ai.chat(conversationHistory.map(item => item.message).join("\n"));
@@ -64,7 +121,7 @@ async function sendMessage() {
         showError('You may not access our Services before agreeing to the Terms of Use.');
     } finally {
         sendBtn.disabled = false;
-        loading.style.display = 'none';
+        loading.classList.remove('show');
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 }
@@ -107,5 +164,3 @@ function showError(message) {
         }, 5000);  // Timeout of 5 seconds for hiding the error message
     }
 }
-
-
