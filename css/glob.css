@@ -272,7 +272,7 @@ header {
         width: 100%;
         max-width: none;
         margin: 0;
-        height: 100vh;
+        height: -webkit-fill-available;
     }
 
     .input-container {
