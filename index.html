@@ -53,8 +53,8 @@
         <div id="loading" class="loading">Thinking...</div>
 
         <div class="input-container">
-            <input type="text" id="user-input" placeholder="Ask Anything!">
-            <button id="send-btn" onclick="sendMessage()">
+            <input type="text" id="user-input" placeholder="Ask Anything!" oninput="toggleButton()">
+            <button id="send-btn" onclick="sendMessage()"  style="display: none;">
                 <i class="fa-solid fa-arrow-up"></i>
             </button>
             <button id="open-modal-btn">
@@ -123,8 +123,6 @@
                         addBtn.style.display = 'none';  // إخفاء الزر بعد الاختيار
                     });
                 });
-
-
             });
 
         </script>

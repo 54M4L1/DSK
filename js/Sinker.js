@@ -30,6 +30,27 @@ window.addEventListener('click', function (event) {
     }
 });
 
+
+function toggleButton() {
+    // التحقق من محتوى مربع الإدخال وتحديث حالة الأزرار
+    if (userInput.value.trim() === '') {
+        sendBtn.style.display = 'none';
+        openModalBtn.style.display = 'inline-block';
+    } else {
+        sendBtn.style.display = 'inline-block';
+        openModalBtn.style.display = 'none';
+    }
+}
+
+// التحقق بشكل دوري كل ثانية (1000 ميلي ثانية)
+setInterval(toggleButton, 1);
+
+// Initialize the button state on page load
+toggleButton();
+
+
+
+
 function setModel(modelType) {
     // إغلاق النافذة بعد اختيار الموديل
     modal.style.display = 'none';
@@ -82,13 +103,13 @@ async function sendMessage() {
     if (conversationHistory.length === 0) {
         conversationHistory.push({
             sender: 'system',
-            message: "Let’s dive into an exciting adventure together! 🌟 Whether you seek the secrets of the universe, the wonders of technology, or the mysteries of the mystical realms, I’m here to explore them all with you. Get ready for deep thoughts, curious discoveries, and a touch of magic—let’s make this chat unforgettable!"
+            message: "Let’s dive into an exciting conversation together! 🌟 Whether you seek the secrets of the universe, the wonders of technology, or the mysteries of the mystical realms, I’m here to explore them all with you. Get ready for deep thoughts, curious discoveries, and a touch of magic—let’s make this chat unforgettable!"
         });
     }
 
     const arabicPattern = /[\u0600-\u06FF]/;
     if (arabicPattern.test(message)) {
-        const arabicSystemMessage = "تفاعل معي كمفكر علمي وخبير في التكنولوجيا والفيزياء والعلوم الروحانية الباطنية، كن محبوباً وراقيًا.";
+        const arabicSystemMessage = "لنغمر معًا في محادثة مثيرة! 🌟 سواء كنت تبحث عن أسرار الكون، أو عجائب التكنولوجيا، أو أسرار العوالم الروحانية، فأنا هنا لاستكشاف كل ذلك معك. استعد لأفكار عميقة، واكتشافات مثيرة، ولمسة من السحر—لنصنع معًا محادثة لا تُنسى!";
         const alreadyAdded = conversationHistory.some(
             item => item.sender === 'system' && item.message === arabicSystemMessage
         );
