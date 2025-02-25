@@ -268,11 +268,16 @@ header {
 }
 
 @media (max-width: 767px) {
+    :root {
+        --vh: 100vh;
+    }
     .chat-container {
         width: 100%;
         max-width: none;
         margin: 0;
-        height: 100vh;
+        height: calc(var(--vh) - 10px);
+        display: flex;
+        flex-direction: column;
     }
 
     .input-container {

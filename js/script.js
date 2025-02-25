@@ -61,6 +61,15 @@ window.onload = () => {
             console.error('❌ Error connecting to Phantom wallet:', error);
         }
     };
+    function updateVh() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}rem`);
+    }
+
+    // تحديث `vh` عند تحميل الصفحة وعند تغيير حجم الشاشة
+    window.addEventListener('resize', updateVh);
+    updateVh();
+
 
     // Attach function to connect button
     connectButton.onclick = connectToWallet;
