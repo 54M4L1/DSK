@@ -138,7 +138,7 @@ header {
 }
 
 #send-btn {
-    background-color: #66ceff;
+    background: linear-gradient(45deg, #2067dd, #ff00a5);
     color: #fff;
     border: none;
     width: 40px;
@@ -152,8 +152,9 @@ header {
         background-color: #ccc;
         cursor: not-allowed;
     }
+
     #send-btn:hover {
-        background-color: #6f98df;
+        background: linear-gradient(0deg, #2067dd, #ff00a5);
     }
 .loading {
     display: none;
@@ -271,7 +272,6 @@ header {
         background: linear-gradient(0deg, #2067dd, #ff00a5);
     }
 
-/* تنسيق النافذة المنبثقة */
 .modal {
     display: none;
     position: fixed;
@@ -285,13 +285,17 @@ header {
 }
 
 .modal-content {
-    background-color: #2a2a2aa8;
+    background-color: #161616cc;
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* تصغير الأعمدة */
     color: white;
     margin: 5% auto;
-    padding: 20px;
+    padding: 15px; /* تقليل التباعد الداخلي */
     border: 1px solid #888;
-    width: 20%;
-    max-width: 300px;
+    max-width: 30%; /* تصغير عرض الصندوق */
+    font-family: 'Cairo';
+    font-size: 14px; /* تصغير النص داخل النافذة */
     border-radius: 10px;
 }
 
@@ -313,20 +317,35 @@ header {
         cursor: pointer;
     }
 
-/* تنسيق الأزرار داخل النافذة المنبثقة */
 .model-btn {
-    background: linear-gradient(0deg, #2067dd, #ff00a5);
+    background: padding-box;
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    margin: 5px 0;
+    font-family: "Orbitron", serif;
+    border-radius: 6px;
+    margin: 4px;
     cursor: pointer;
+    padding: 10px; /* ضبط التباعد الداخلي */
+    width: 120px; /* تصغير العرض */
+    height: 50px; /* تصغير الارتفاع */
+    display: grid; /* تحسين التوزيع */
+    align-items: center; /* توسيط العناصر عموديًا */
+    justify-content: center; /* توسيط العناصر أفقيًا */
+    font-size: 14px; /* تصغير النص داخل الأزرار */
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
     .model-btn:hover {
         background: linear-gradient(180deg, #2067dd, #ff00a5);
     }
+.modal-content h3 {
+    text-align: center;
+    margin-top: auto;
+    font-size: small;
+    font-family: "Orbitron", serif;
+}
+
 
 
 
@@ -350,7 +369,27 @@ header {
 #add-to-home-screen {
     display: none;
 }
-
+.own-model-btn {
+    background: linear-gradient(0deg, #000000, #b4b4b4);
+    color: white;
+    border: none;
+    font-family: 'Orbitron';
+    border-radius: 6px;
+    margin: 4px;
+    cursor: pointer;
+    padding: 10px;
+    width: max-content;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.fa {
+    margin-right: 5px; /* يضيف مسافة على اليمين */
+}
 
 
 @media (max-width: 767px) {
@@ -365,26 +404,33 @@ header {
         display: flex;
         height: 60px;
         padding: 10px;
-        margin-bottom: 20px;
         color: #00abff;
         background-color: #191a1a;
     }
+
     #user-input {
         flex: 1;
-        padding: 30px;
+        padding: 20px;
         background-color: #3c3c3c;
         border: 1px solid #ff000000;
         color: #ffffff;
         border-radius: 4px;
         margin-left: 1px;
+        text-align: right;
+        height: 10px;
     }
+
     .custom-file-container {
         position: fixed;
         top: 10%;
         left: 20px;
+        background-color: #3939398a;
+        border: 1px solid #ffffff6b;
+        padding: 7px;
+        border-radius: 9px;
         display: none;
-        flex-direction: column; /* ترتيب العناصر عمودياً */
-        gap: 10px; /* مسافة بين الأيقونات */
+        flex-direction: column;
+        gap: 10px;
         z-index: 50;
     }
 
@@ -398,13 +444,16 @@ header {
         cursor: pointer;
         border-radius: 50%;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        display: flex;
+        display: table;
         justify-content: center;
         align-items: center;
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
     }
-
+        .custom-file-label img {
+            width: 33px !important;
+            height: 33px !important;
+        }
     /* زر القائمة (☰) */
     .menu-toggle {
         visibility: visible;
@@ -419,6 +468,7 @@ header {
         border-radius: 5px;
         padding: 10px;
         font-size: 20px;
+        width:50px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         border: none;
         z-index: 999;
@@ -433,8 +483,44 @@ header {
         display: none;
     }
 
+    .modal-content {
+        background-color: #161616cc;
+        font-family: "Orbitron", serif;
+        color: white;
+        margin: 5% auto;
+        font-size: 10px;
+        padding: 10px;
+        gap: 3px;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 300px;
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        justify-content: center;
+    }
+
+    .model-btn {
+        width: 100px;
+        height: 40px;
+        font-size: 10px; 
+        padding: 5px;
+        border-radius: 5px; 
+        background: padding-box;
+    }
+        .model-btn:active {
+            background: linear-gradient(180deg, #2067dd, #ff00a5);
+    
+           }
+
     #add-to-home-screen {
-        display: block !important; /* إظهار الزر فقط على الهواتف */
+        display: block !important; 
+    }
+    .modal-content h3 {
+        text-align: center;
+        margin-top: auto;
+        font-size: small;
+        font-family: "Orbitron", serif;
     }
 }
 }
