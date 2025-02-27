@@ -13,17 +13,14 @@ userInput.addEventListener('keypress', function (e) {
     }
 });
 
-// فتح النافذة عند الضغط على الزر
 openModalBtn.addEventListener('click', function () {
     modal.style.display = 'block';
 });
 
-// غلق النافذة عند الضغط على زر الإغلاق
 closeModalBtn.addEventListener('click', function () {
     modal.style.display = 'none';
 });
 
-// غلق النافذة عند الضغط خارجها
 window.addEventListener('click', function (event) {
     if (event.target === modal) {
         modal.style.display = 'none';
@@ -32,7 +29,6 @@ window.addEventListener('click', function (event) {
 
 
 function toggleButton() {
-    // التحقق من محتوى مربع الإدخال وتحديث حالة الأزرار
     if (userInput.value.trim() === '') {
         sendBtn.style.display = 'none';
         openModalBtn.style.display = 'inline-block';
@@ -42,20 +38,16 @@ function toggleButton() {
     }
 }
 
-// التحقق بشكل دوري كل ثانية (1000 ميلي ثانية)
 setInterval(toggleButton, 1);
 
-// Initialize the button state on page load
 toggleButton();
 
 
 
 
 function setModel(modelType) {
-    // إغلاق النافذة بعد اختيار الموديل
     modal.style.display = 'none';
 
-    // إرسال رسالة تعبر عن اختيار الموديل
     let modelMessage = '';
 
     switch (modelType) {
@@ -75,7 +67,22 @@ function setModel(modelType) {
             modelMessage = "Get ready to explore the cutting-edge world of innovation, from artificial intelligence to the digital revolution. The future is now, and we’re about to shape it together!";
             break;
         case 'funny':
-            modelMessage = "Let’s lighten the mood with some laughter, wit, and humor. Prepare for a good time with jokes, memes, and all-around fun vibes!";
+            modelMessage = "Let’s lighten the mood with some randomness, and humor. Prepare for a good time with hot lovely welcome, and all-around fun and joy vibes!";
+            break;
+        case 'history':
+            modelMessage = "Step into the time machine as we explore the rich tapestry of human history, from ancient civilizations to modern revolutions. Let’s uncover the stories that shaped our world!";
+            break;
+        case 'biology':
+            modelMessage = "Delve into the wonders of life, from the tiniest cells to the most complex ecosystems. Let’s explore the intricate web of life together!";
+            break;
+        case 'art':
+            modelMessage = "Immerse yourself in the world of creativity, where colors, shapes, and emotions come together to tell stories. Let’s explore the beauty of human expression!";
+            break;
+        case 'music':
+            modelMessage = "Tune into the universal language of music, where melodies, rhythms, and harmonies create a symphony of emotions. Let’s explore the soundscape of the soul!";
+            break;
+        case 'literature':
+            modelMessage = "Open the pages of great works, where words weave tales of love, adventure, and wisdom. Let’s embark on a literary journey through the ages!";
             break;
         default:
             modelMessage = "Oops! Something went wrong. Please select a valid model to begin.";
@@ -83,10 +90,8 @@ function setModel(modelType) {
 
 
 
-    // إضافة الرسالة إلى سجل المحادثة
     conversationHistory.push({ sender: 'system', message: modelMessage });
 
-    // يمكنك هنا أيضًا إرسال الرسالة إلى الـ API إذا أردت تحديث النموذج بناءً على الاختيار
     console.log(`Model selected: ${modelType}`);
 }
 
@@ -109,7 +114,7 @@ async function sendMessage() {
 
     const arabicPattern = /[\u0600-\u06FF]/;
     if (arabicPattern.test(message)) {
-        const arabicSystemMessage = "لنغمر معًا في محادثة مثيرة! 🌟 سواء كنت تبحث عن أسرار الكون، أو عجائب التكنولوجيا، أو أسرار العوالم الروحانية، فأنا هنا لاستكشاف كل ذلك معك. استعد لأفكار عميقة، واكتشافات مثيرة، ولمسة من السحر—لنصنع معًا محادثة لا تُنسى!";
+        const arabicSystemMessage = "🌟 لنغمر معًا في محادثة مثيرة! سواء كنت تبحث عن أسرار الكون، أو عجائب التكنولوجيا، أو أسرار العوالم الروحانية، فأنا هنا لاستكشاف كل ذلك معك. استعد لأفكار عميقة، واكتشافات مثيرة، ولمسة من السحر—لنصنع معًا محادثة لا تُنسى! ";
         const alreadyAdded = conversationHistory.some(
             item => item.sender === 'system' && item.message === arabicSystemMessage
         );
@@ -122,12 +127,12 @@ async function sendMessage() {
         }
     }
 
-    conversationHistory.push({ sender: 'user', message }, { model: 'gpt-4o', stream: true });
+    conversationHistory.push({ sender: 'user', message }, { model: 'grok-beta', stream: true });
 
     appendMessage('user-message', message);
     userInput.value = '';
     sendBtn.disabled = true;
-    loading.classList.add('show'); // إظهار التحميل دون تغيير التخطيط
+    loading.classList.add('show');
 
     try {
         const response = await puter.ai.chat(conversationHistory.map(item => item.message).join("\n"));
@@ -139,7 +144,7 @@ async function sendMessage() {
         appendMessage('bot-message', formattedResponse);
     } catch (error) {
         console.error('Error:', error);
-        showError('You may not access our Services before agreeing to the Terms of Use.');
+        showError('It seems there is an issue with your connection to our server. Please reload the page or try again later.');
     } finally {
         sendBtn.disabled = false;
         loading.classList.remove('show');
@@ -182,6 +187,6 @@ function showError(message) {
 
         setTimeout(() => {
             erBox.style.display = 'none';
-        }, 5000);  // Timeout of 5 seconds for hiding the error message
+        }, 5000);
     }
 }
