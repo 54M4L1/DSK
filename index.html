@@ -39,8 +39,8 @@
         <a class='custom-file-label' href='#' target='_blank'>
             <img width="50" height="50" src="https://img.icons8.com/nolan/50/developer.png" alt="developer" />
         </a>
-        <a id="add-to-home-screen" style="cursor: pointer;" class="custom-file-label">
-    <img width="50" height="50" src="https://img.icons8.com/nolan/50/download.png" alt="Add to Home Screen" />
+          <a id="add-to-home-screen" class='custom-file-label'>
+            <img width="50" height="50" src="https://img.icons8.com/nolan/50/download.png" alt="download" />
         </a>
 
     </div>
@@ -124,27 +124,30 @@
                     menu.classList.toggle("show-menu"); 
                 });
             });
-            let deferredPrompt;
+         let deferredPrompt;
+const addBtn = document.getElementById('add-to-home-screen');
 
-            window.addEventListener('beforeinstallprompt', (e) => {
-                e.preventDefault();
-                deferredPrompt = e;
-                const addBtn = document.getElementById('add-to-home-screen');
-                addBtn.style.display = 'block';
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    addBtn.style.display = 'block'; // إظهار الزر عند توفر الحدث
 
-                addBtn.addEventListener('click', () => {
-                    deferredPrompt.prompt();
-                    deferredPrompt.userChoice.then((choiceResult) => {
-                        if (choiceResult.outcome === 'accepted') {
-                            console.log('Yes');
-                        } else {
-                            console.log('No');
-                        }
-                        deferredPrompt = null;
-                        addBtn.style.display = 'none';  
-                    });
-                });
-            });
+    addBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+
+            if (outcome === 'accepted') {
+                console.log('accepted 🎉');
+            } else {
+                console.log('declined ❌');
+            }
+            
+            deferredPrompt = null;
+            addBtn.style.display = 'none'; // إخفاء الزر بعد التفاعل
+        }
+    });
+});
 
         </script>
 </body>
