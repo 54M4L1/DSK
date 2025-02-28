@@ -348,7 +348,9 @@ header {
 }
 
 
-
+#add-to-home-screen {
+    display: none;
+}
 
 
 @keyframes fadeIn {
@@ -367,9 +369,7 @@ header {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
-#add-to-home-screen {
-    display: none;
-}
+
 .own-model-btn {
     background: linear-gradient(0deg, #000000, #b4b4b4);
     color: white;
