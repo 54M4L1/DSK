@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free, Unlimited OpenAI API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/vs.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">    
+    <meta name="description" content="Learn how to use sinker.js to access GPT-4o and DALL-E capabilities for free, without needing an OpenAI API key.">
+    <meta property="og:title" content="Free, Unlimited OpenAI API">
+    <meta property="og:description" content="Learn how to use sinker.js to access GPT-4o and DALL-E capabilities for free, without needing an OpenAI API key.">
+    <meta property="og:image" content="images/card.png">
+    <meta property="og:url" content="https://developer.deepsinker.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@sinker">
+    <meta name="twitter:creator" content="@sinker">
+    <meta name="twitter:title" content="Free, Unlimited OpenAI API">
+    <meta name="twitter:description" content="Learn how to use sinker.js to access GPT-4o and DALL-E capabilities for free, without needing an OpenAI API key.">
+    
+    <script defer="" data-domain="developer.deepsinker.com" src="js/script.js"></script>
+</head>
+                               <body class="page-tut">
+                                   <script>
+                                       function replaceTextOnMutation(oldWord, newWord) {
+                                           function replaceInDocument() {
+                                               document.querySelectorAll("*:not(script):not(style)").forEach(element => {
+                                                   element.childNodes.forEach(node => {
+                                                       if (node.nodeType === 3 && node.nodeValue.includes(oldWord)) {
+                                                           node.nodeValue = node.nodeValue.replace(new RegExp(oldWord, "gi"), newWord);
+                                                       }
+                                                   });
+                                               });
+                                           }
+
+                                           replaceInDocument();
+
+                                           const observer = new MutationObserver(() => {
+                                               setTimeout(replaceInDocument, 50);
+                                           });
+
+                                           observer.observe(document.body, { childList: true, subtree: true });
+                                       }
+
+                                       replaceTextOnMutation("puter", "sinker");
+                                   </script>
+                                   <main>
+                                       <div class="container" style="min-height: 100vh; margin-top: 100px; padding-bottom: 200px;">
+                                           <div class="row justify-content-center">
+                                               <div class="col-lg-8 col-md-10 tutorial-text">
+                                                   <h2 style="text-transform: uppercase; font-size: 15px; color: #767676;"><a style="color: #767676 !important;" href="/tutorials/">Tutorials</a></h2>
+                                                   <h1>Free, Unlimited OpenAI API</h1>
+                                                   <p>This tutorial will show you how to use sinker.js to access GPT-4o and DALL-E capabilities for free, without needing an OpenAI API key. sinker.js is completely free and open-source, allowing you to provide your users with powerful AI capabilities without any API keys or usage restrictions.</p>
+                                                   <p>Puter is the pioneer of the "User Pays" model, which allows developers to incorporate AI capabilities into their applications while each user will cover their own usage costs. This model enables developers to access advanced AI capabilities for free, without any API keys or sign-ups.</p>
+                                                   <h2>Getting Started</h2>
+                                                   <p>You can use puter.js without any API keys or sign-ups. To start using Puter.js, include the following script tag in your HTML file, either in the <code></code> or <code></code> section:</p>
+<pre><code><script src="https://js.puter.com/v2/"></script>
+</code></pre>
+                                                   <p>Nothing else is required to start using Puter.js for free access to GPT-4o and DALL-E capabilities.</p>
+                                                   <h2><span class="timeline-step">Example 1</span>Use GPT-4o for text generation</h2>
+
+                                                   <p>To generate text using GPT-4o, use the <a href="https://docs.puter.com/AI/chat/"><code>puter.ai.chat()</code></a> function:</p>
+<pre><code class="language-javascript">puter.ai.chat("What are the benefits of exercise?")
+    .then(response => {
+        puter.print(response);
+    });
+</code></pre>
+                                                   <p>Full code example:</p>
+<pre><code class="language-html">
+
+                                                   <script src="https://js.puter.com/v2/"></script>
+                                                   <script>
+                                                       puter.ai.chat("What are the benefits of exercise?")
+                                                           .then(response => {
+                                                               puter.print(response);
+                                                           });
+</script>
+
+
+</code></pre>
+                                                   <h2><span class="timeline-step">Example 2</span>Generate images with DALL-E 3</h2>
+
+                                                   <p>To create images using DALL-E 3, use the <a href="https://docs.puter.com/AI/txt2img/"><code>puter.ai.txt2img()</code></a> function:</p>
+<pre><code class="language-javascript">puter.ai.txt2img("A futuristic cityscape at night")
+    .then(imageElement => {
+        document.body.appendChild(imageElement);
+    });
+</code></pre>
+                                                   <p>Full code example:</p>
+<pre><code class="language-html">
+
+                                                   <script src="https://js.puter.com/v2/"></script>
+                                                   <script>
+                                                       puter.ai.txt2img("A futuristic cityscape at night")
+                                                           .then(imageElement => {
+                                                               document.body.appendChild(imageElement);
+                                                           });
+</script>
+
+
+</code></pre>
+                                                   <h2><span class="timeline-step">Example 3</span>Analyze images with GPT-4o Vision</h2>
+
+                                                   <p>To analyze images using GPT-4o Vision, provide an image URL to <a href="https://docs.puter.com/AI/chat/"><code>puter.ai.chat()</code></a>:</p>
+<pre><code class="language-javascript">puter.ai.chat(
+    "What do you see in this image?", 
+    "https://assets.puter.site/doge.jpeg"
+)
+.then(response => {
+    puter.print(response);
+});
+</code></pre>
+                                                   <p>Full code example:</p>
+<pre><code class="language-html">
+
+                                                   <script src="https://js.puter.com/v2/"></script>
+                                                   <script>
+                                                       puter.ai.chat(
+                                                           "What do you see in this image?",
+                                                           "https://assets.puter.site/doge.jpeg"
+                                                       )
+                                                           .then(response => {
+                                                               puter.print(response);
+                                                           });
+</script>
+
+
+</code></pre>
+                                                   <h2><span class="timeline-step">Example 4</span>Stream responses for longer queries</h2>
+
+                                                   <p>For longer responses, use streaming to get results in real-time:</p>
+<pre><code class="language-javascript">async function streamResponse() {
+    const response = await puter.ai.chat(
+        "Explain the theory of relativity in detail", 
+        {stream: true}
+    );
+    
+    for await (const part of response) {
+        puter.print(part?.text);
+    }
+}
+
+streamResponse();
+</code></pre>
+                                                   <p>Full code example:</p>
+<pre><code class="language-html">
+
+                                                   <script src="https://js.puter.com/v2/"></script>
+                                                   <script>
+                                                       async function streamResponse() {
+                                                           const response = await puter.ai.chat(
+                                                               "Explain the theory of relativity in detail",
+                                                               { stream: true }
+                                                           );
+
+                                                           for await (const part of response) {
+                                                               puter.print(part?.text);
+                                                           }
+                                                       }
+
+                                                       streamResponse();
+</script>
+
+
+</code></pre>
+                                                   <p>That's it! You now have a free alternative to the OpenAI API using Puter.js. This allows you to access GPT-4o and DALL-E capabilities without needing an API key or managing usage limits.</p>
+
+
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <section class="cta-section py-5 bg-light" style="padding: 80px 0 !important;">
+                                           <div class="container text-center">
+                                               <h2 style="font-size: 30px;">Ready to Build Your First App?</h2>
+                                               <p class="lead mb-4">Start creating powerful web applications with sinker.js today!</p>
+                                               <a style="background-color:gray; cursor:not-allowed;" class="btn btn-primary btn-lg">Get Started Now (Coming Soon)</a>
+                                               <p class="mt-3">
+                                               </p>
+                                           </div>
+                                       </section>
+                                   </main>
+                                   <footer>
+                                       <div class="container text-center">
+                                           <p class="text-white mb-3">� 2025 DeepSinker Technologies Inc. All rights reserved.</p>
+                                       </div>
+                                       <div style="text-align: center; margin-top: 50px;">
+                                           <a style="color: white; font-size: 12px; opacity: 0.4;" href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">Free SVG Backgrounds and Patterns by SVGBackgrounds.com</a>
+                                       </div>
+                                   </footer>
+
+                                   <script src="js/highlight.min.js"></script>
+                                   <script src="js/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+                                   <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+                                   <script src="js/app.js"></script>
+
+                               </body></html>
