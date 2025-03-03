@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <link rel="manifest" href="manifest.json">
-    <link href="https://i.imgur.com/NrRPXcS.png" rel="icon" type="image/png">
+    <link href="https://img.icons8.com/color/96/anchor.png" rel="icon" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/glob.css">
     <meta charset="UTF-8">
@@ -52,7 +52,7 @@
     <div id="error-message" class="erbox"></div>
     <div class="chat-container">
         <div id="chat-box" class="chat-box"></div>
-        <div id="loading" class="loading">Thinking...</div>
+        <div id="loading" class="loading">Processing...</div>
 
         <div class="input-container">
             <input type="text" id="user-input" placeholder="Ask Anything!" oninput="toggleButton()">
@@ -102,8 +102,11 @@
                 <button class="model-btn" onclick="setModel('literature')">
                     <i class="fas fa-book-open"></i> Literature
                 </button>
-                <button class="own-model-btn">
-                    <i></i> Build your Own (Coming soon)
+                <button class="model-btn" style=" background: linear-gradient(3deg, #54158c, #b540fb, #ff00a500);" onclick="window.location.href = './Creator';">
+                    <i class="fas fa-cogs"></i> Creator
+                </button>
+                <button class="model-btn" style=" background: linear-gradient(3deg, #2067dd, #3cd3e9, #ff00a500);" onclick="window.location.href = './App';">
+                    <i class="fab fa-app-store-ios"></i> App Creator
                 </button>
             </div>
         </div>

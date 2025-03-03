@@ -30,9 +30,9 @@ header {
     font-size: xx-large;
 }
 .btn-secondary {
-    color: cyan;
-    background-color: black;
-    border: 1px solid cyan;
+    color: #ffffff;
+    background: linear-gradient(45deg, #2067dd, #ff00a5);
+    border: 1px solid #000000;
     position: absolute;
     top: 3%;
     right: 3%;
@@ -40,15 +40,18 @@ header {
     text-align: center;
     padding: 10px;
     cursor: pointer;
+    z-index:5;
+    transition: background 0.9s ease, text-shadow 0.5s ease, color 0.5s ease;
 }
+
     .btn-secondary:hover {
-        background-color: cyan;
-        color: black;
-        text-shadow: 0px 0px 5px 0px white;
+        background: linear-gradient(25deg, #2067dd, #ff00a5);
+        text-shadow: 0px 0px 5px white;
     }
+
 .connected {
     color: #fff;
-    background-color: #00abff;
+    background-color: #ffa2f8;
     border: 1px solid #ffffff;
     position: absolute;
     top: 3%;
@@ -60,27 +63,25 @@ header {
 }
 
 .chat-container {
-    width: 60%;
+    width: 70%;
     height: 100%;
     position: absolute;
-    border-left: 1px solid gray; 
-    border-right: 1px solid gray;
     top: 0;
     bottom: 0;
-    background-color: #00000078;
+    background-color: #00000000;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     z-index: 1;
 }
-
-
+    .chat-container:focus-within {
+        background: linear-gradient(0deg, rgba(199,93,255,0.3) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%);
+    }
 .chat-box {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
-    border-bottom: 1px solid #63bff1;
 }
 
 .message {
@@ -95,7 +96,9 @@ header {
     background-color: #007bffa6;
     color: #fff;
     width: fit-content;
+    border-radius: 9px 0px 9px 0px;
     margin-left: auto;
+    min-width: 40px;
  }
 .connectwet {
     background-color: aqua;
@@ -111,7 +114,9 @@ header {
     font-family: "Orbitron", serif;
     background-color: #052341;
     color: white;
+    border-radius: 0px 9px 0px 9px;
     margin-right: auto;
+    border: 1px solid gray;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     user-select: none;
@@ -125,20 +130,21 @@ header {
     display: flex;
     padding: 10px;
     color: #00abff;
-    background-color: #191a1a;
 }
 
 #user-input {
     flex: 1;
-    padding: 5px;
+    padding: 10px;
     background-color: #3c3c3c;
     border: 1px solid #ff000000;
     color: #ffffff;
-    border-radius: 4px;
+    border-radius: 20px;
     margin-right: 10px;
 }
-
-#send-btn {
+  .input:focus-visible {
+        border-image: linear-gradient(45deg, #2067dd, #ff00a5) 1;
+    }
+    #send-btn {
     background: linear-gradient(45deg, #2067dd, #ff00a5);
     color: #fff;
     border: none;
@@ -158,15 +164,18 @@ header {
         background: linear-gradient(0deg, #2067dd, #ff00a5);
     }
 .loading {
-    display: none;
+    visibility: hidden;
     position: relative;
-    background-color: #00abff;
+    background: linear-gradient(45deg, #2067dd, #ff00a5);
     text-align: center;
-    padding: 6px;
+    padding: 2px;
     color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
     .loading.show {
-        display: block;
+        opacity: 1;
+        visibility: visible;
     }
 .custom-file-container {
     position: fixed;
@@ -257,7 +266,6 @@ header {
 }
 
 
-
 #open-modal-btn {
     background: linear-gradient(45deg, #2067dd, #ff00a5);
     color: #fff;
@@ -267,10 +275,12 @@ header {
     margin: 5px;
     border-radius: 100%;
     cursor: pointer;
+    transition: background 0.9s ease, text-shadow 0.5s ease, color 0.5s ease;
 }
 
     #open-modal-btn:hover {
         background: linear-gradient(0deg, #2067dd, #ff00a5);
+        text-shadow: 0px 0px 10px white;
     }
 
 .modal {
@@ -319,7 +329,7 @@ header {
     }
 
 .model-btn {
-    background: padding-box;
+    background: linear-gradient(3deg, #2067dd, #ff00a500, #ff00a500);
     color: white;
     border: none;
     font-family: "Orbitron", serif;
@@ -336,21 +346,21 @@ header {
     text-align: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
     .model-btn:hover {
-        background: linear-gradient(180deg, #2067dd, #ff00a5);
+        background-color: #ff00a5;
     }
 .modal-content h3 {
     text-align: center;
     margin-top: auto;
     font-size: small;
+    color: thistle;
     font-family: "Orbitron", serif;
+
 }
 
-
-#add-to-home-screen {
-    display: none;
-}
+    #add-to-home-screen {
+        display: none;
+    }
 
 
 @keyframes fadeIn {
@@ -375,18 +385,21 @@ header {
     color: white;
     border: none;
     font-family: 'Orbitron';
-    border-radius: 6px;
+    border-radius: 20px;
     margin: 4px;
-    cursor: pointer;
     padding: 10px;
-    width: max-content;
+    position: relative;
     height: 50px;
-    display: flex;
+    left: 100%;
+    border-top: 1px solid gray;
+    top: 10px;
+    display: block;
     align-items: center;
+    width: auto;
     justify-content: center;
+    text-transform: lowercase;
     font-size: 10px;
     text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .fa {
     margin-right: 5px; /* يضيف مسافة على اليمين */
@@ -400,6 +413,11 @@ header {
         max-width: none;
         margin: 0;
         height: 100%;
+    }
+    .own-model-btn {
+        left:0%;
+        width: max-content;
+
     }
 
     .input-container {
@@ -491,13 +509,14 @@ header {
         color: white;
         margin: 5% auto;
         font-size: 10px;
-        padding: 10px;
-        gap: 3px;
+        padding: 15px;
+        padding-bottom: 5%;
         border: 1px solid #888;
         width: 90%;
         max-width: 300px;
         border-radius: 10px;
         display: grid;
+        gap: 6px;
         grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
         justify-content: center;
     }
@@ -505,15 +524,11 @@ header {
     .model-btn {
         width: 100px;
         height: 40px;
-        font-size: 10px; 
+        font-size: 10px;
         padding: 5px;
-        border-radius: 5px; 
-        background: padding-box;
+        border-radius: 5px;
+        background: linear-gradient(3deg, #2067dd, #ff00a500, #ff00a500);
     }
-        .model-btn:active {
-            background: linear-gradient(180deg, #2067dd, #ff00a5);
-    
-           }
 
     #add-to-home-screen {
         display: block !important; 
