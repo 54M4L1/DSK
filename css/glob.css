@@ -425,16 +425,14 @@ header {
         height: 60px;
         padding: 10px;
         color: #00abff;
-        background-color: #191a1a;
     }
 
     #user-input {
         flex: 1;
         padding: 20px;
         background-color: #3c3c3c;
-        border: 1px solid #ff000000;
         color: #ffffff;
-        border-radius: 4px;
+        border-radius: 20px;
         margin-left: 1px;
         text-align: left;
         height: 10px;
