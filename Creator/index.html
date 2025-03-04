@@ -1,0 +1,494 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinker AI Model Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* تحسين الخطوط */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: "Poppins", serif;
+            background: linear-gradient(135deg, #091540, #1b3b6f);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        #customAlert {
+            font-family: "Orbitron", serif;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+            #customAlert .alertBox {
+                background: linear-gradient(135deg, #ff66cc, #6699ff);
+                padding: 30px;
+                border-radius: 15px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                text-align: center;
+                max-width: 400px;
+                width: 90%;
+                animation: fadeIn 0.5s ease-in-out;
+            }
+
+            #customAlert h2 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+                color: #fff;
+            }
+
+            #customAlert p {
+                font-size: 1rem;
+                color: #fff;
+                margin-bottom: 20px;
+            }
+
+            #customAlert button {
+                background: #fff;
+                color: #333;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: background 0.3s ease;
+            }
+
+                #customAlert button:hover {
+                    background: #f1f1f1;
+                }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* تحسين الهيدر */
+        header {
+            background: linear-gradient(135deg, #ff66cc, #6699ff);
+            text-align: center;
+            font-family: "Orbitron", serif;
+            padding: 40px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+            header h1 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin: 0;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
+        /* تحسين القائمة */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+                margin: 0;
+                padding: 0;
+            }
+
+                nav ul li {
+                    position: relative;
+                }
+
+                    nav ul li a {
+                        color: #fff;
+                        padding: 10px 15px;
+                        display: block;
+                        text-decoration: none;
+                        transition: all 0.3s ease;
+                        border-radius: 5px;
+                    }
+
+                        nav ul li a:hover {
+                            background: rgba(255, 255, 255, 0.2);
+                            transform: translateY(-3px);
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                        }
+
+                    nav ul li:hover > ul {
+                        display: block;
+                    }
+
+                nav ul ul {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background: rgba(0, 0, 0, 0.9);
+                    padding: 10px;
+                    border-radius: 5px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                }
+
+                    nav ul ul li {
+                        width: 200px;
+                    }
+
+        /* تحسين الشريط الجانبي */
+        aside {
+            background: rgba(0, 0, 50, 0.8);
+            width: 250px;
+            float: left;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+            aside h2 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+                text-align: center;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            aside ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+                aside ul li a {
+                    color: #fff;
+                    text-decoration: none;
+                    padding: 10px;
+                    display: block;
+                    transition: all 0.3s ease;
+                    border-radius: 5px;
+                }
+
+                    aside ul li a:hover {
+                        background: rgba(255, 255, 255, 0.1);
+                        transform: translateX(10px);
+                    }
+
+        /* تحسين المحتوى الرئيسي */
+        main {
+            margin-left: 270px;
+            padding: 20px;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            }
+
+            .card h2 {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .card p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+        /* تحسين الفوتر */
+        footer {
+            clear: both;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+            footer p {
+                margin: 0;
+                font-size: 0.9rem;
+            }
+
+        /* إضافة رسوم متحركة */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* تحسين شريط التمرير */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #ff66cc, #6699ff);
+            border-radius: 10px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(135deg, #ff66cc, #6699ff);
+            }
+        @media screen and (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            header {
+                padding: 20px 10px;
+            }
+
+                header h1 {
+                    font-size: 1.8rem;
+                }
+
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+
+                nav ul {
+                    display: block;
+                    width: 100%;
+                }
+
+                    nav ul li {
+                        margin-bottom: 10px;
+                    }
+
+                        nav ul li a {
+                            padding: 8px 15px;
+                            font-size: 1rem;
+                        }
+
+                    nav ul ul {
+                        position: static;
+                        padding: 0;
+                    }
+
+            aside {
+                width: 100%;
+                margin: 10px 0;
+                float: none;
+            }
+
+                aside h2 {
+                    font-size: 1.3rem;
+                }
+
+            main {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            footer {
+                font-size: 0.8rem;
+            }
+
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+        }
+
+    </style>
+    <div id="customAlert">
+        <div class="alertBox">
+            <h2>Alert!</h2>
+            <p>You are not authorized to access this page right now. Please come back later.</p>
+        </div>
+    </div>
+</head>
+<body>
+    <header>
+        <h1>SinkerJS\ Build Your AI agent</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Signup</a></li>
+
+            <li>
+                <a href="#">Models</a>
+                <ul>
+                    <li><strong>Users</strong></li>
+                    <li><a href="#">Signup & Management</a></li>
+                    <li><a href="#">Access Control</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Models</a>
+                <ul>
+                    <li><a href="#">Training Dashboard</a></li>
+                    <li><a href="#">Version Control</a></li>
+                    <li><a href="#">Deployment Status</a></li>
+                    <li><a href="#">Performance Reports</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Datasets</a>
+                <ul>
+                    <li><a href="#">Upload & Management</a></li>
+                    <li><a href="#">Preprocessing Workflows</a></li>
+                    <li><a href="#">Validation Reports</a></li>
+                    <li><a href="#">Anomaly Detection</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">API</a>
+                <ul>
+                    <li><a href="#">Key Generation</a></li>
+                    <li><a href="#">Usage Statistics</a></li>
+                    <li><a href="#">Error Monitoring</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Settings</a>
+                <ul>
+                    <li><a href="#">System Configuration</a></li>
+                    <li><a href="#">Notifications</a></li>
+                    <li><a href="#">Plan</a></li>
+                    <li><a href="#">Backup & Restore</a></li>
+                </ul>
+            </li>
+        </ul>
+
+
+
+    </nav>
+    <aside>
+        <h2>Partner Services</h2>
+        <ul>
+            <li><a href="#">Explore AI Models</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Learn About AI Training</a></li>
+            <li><a href="#">Browse Sample Datasets</a></li>
+            <li><a href="#">Get Support</a></li>
+        </ul>
+
+    </aside>
+    <main>
+        <section class="card">
+            <h2>API Status</h2>
+            <p>Uptime: 98.92% | Requests: 43.3k | Errors: 0.02%</p>
+        </section>
+        <section class="card">
+            <h2>Model Performance</h2>
+            <p>Latest Model: (DeepSinker) (Grok-Beta) | Accuracy: 98.7% | Loss: 0.02</p>
+        </section>
+        <section class="card">
+            <h2>System Performance</h2>
+            <p>Model Training: 32% | Data Processing: 58% | API Load: 12%</p>
+        </section>
+        <script>
+            // وظيفة لإظهار النافذة
+            function showAlert() {
+                document.getElementById('customAlert').style.display = 'flex';
+            }
+
+            // وظيفة لإخفاء النافذة
+            function closeAlert() {
+                document.getElementById('customAlert').style.display = 'none';
+            }
+
+            // الاستماع إلى حدث النقر على مستوى الصفحة
+            document.addEventListener('click', function (event) {
+                // التأكد من أن النقر لم يكن على النافذة نفسها أو زر "OK"
+                if (event.target.closest('#customAlert') === null) {
+                    showAlert();
+                }
+            });
+        </script>
+    </main>
+    <footer>
+        <p>&copy; 2025 DeepSinkr AI Platform. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
