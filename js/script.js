@@ -43,8 +43,13 @@ window.onload = () => {
                 walletStatus.style.transform = 'translate(-50%, -50%)';
                 walletStatus.style.zIndex = '9999';                  
                 walletStatus.style.fontFamily = 'Poppins, sans-serif'; 
+                
+  setTimeout(function() {
+        walletStatus.style.display = 'none';
+    }, 20000); // إخفاء العنصر بعد 5 ثوانٍ
 
-                    document.addEventListener('click', function(event) {
+    // إخفاء العنصر عند الضغط خارج الصندوق
+    document.addEventListener('click', function(event) {
         if (!walletStatus.contains(event.target)) {
             walletStatus.style.display = 'none';
         }
