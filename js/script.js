@@ -31,7 +31,7 @@ window.onload = () => {
 
             const walletStatus = document.getElementById('wallet-status');
             if (walletStatus) {
-                walletStatus.textContent = `Connected to:\n• ${buyerPublicKey.toString()}\n\nYour wallet address has been saved in our databases.\n\n• Once you have $DSK in your wallet, you will earn 1% for every day of activity with the deepsinker Agent.`;
+                walletStatus.innerHTML = `Connected to:<br>• ${buyerPublicKey.toString()}<br><br>Your wallet address has been saved in our databases.<br><br>• Once you have $DSK in your wallet, you will earn 1% for every day of activity with the deepsinker Agent.`;
                 walletStatus.style.display = 'block';
                 walletStatus.style.backgroundColor = 'green';
                 walletStatus.style.color = 'white';
