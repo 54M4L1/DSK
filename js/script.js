@@ -31,7 +31,7 @@ window.onload = () => {
 
             const walletStatus = document.getElementById('wallet-status');
             if (walletStatus) {
-                walletStatus.innerHTML = `Connected to:<br>• ${buyerPublicKey.toString()}<br><br>Your wallet address has been saved in our databases.<br><br>• Once you have $DSK in your wallet, you will earn 1% for every day of activity with the deepsinker Agent.`;
+                walletStatus.innerHTML = `Connected to:<br>• ${buyerPublicKey.toString()}<br><br>Your wallet address has been saved in our databases.<br><br>• Once you have $DSK in your wallet, you will earn 0.1 for every day of activity on our website and 5$ if you train or build.`;
                 walletStatus.style.display = 'block';
                 walletStatus.style.backgroundColor = 'green';
                 walletStatus.style.color = 'white';
@@ -41,7 +41,8 @@ window.onload = () => {
                 walletStatus.style.top = '50%';
                 walletStatus.style.left = '50%';
                 walletStatus.style.transform = 'translate(-50%, -50%)';
-                walletStatus.style.zIndex = '9999';
+                walletStatus.style.zIndex = '9999';                  
+                walletStatus.style.fontFamily = 'Poppins, sans-serif'; 
 
                 // Hide the status after 2 seconds
                 setTimeout(() => {
