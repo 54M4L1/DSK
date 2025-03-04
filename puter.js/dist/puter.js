@@ -273,8 +273,8 @@
         <div class="buttons">
             <button class="button button-primary button-auth" id="launch-auth-popup" style="margin-left:10px;">Continue</button>
         </div>
-        <p style="text-align: center; margin-top: -15px; font-size: 14px;">Powered by <a href="https://cdn.jsdelivr.net/gh/54M4L1/SinkerJS@main/" target="_blank">Sinker.js</a></p>
-        <p class="launch-auth-popup-footnote">By clicking "Continue" you agree to our <a href="https://puter.com/?embedded_in_popup=true&request_auth=true" target="_blank">Terms of Service</a></p>
+        <p style="text-align: center; margin-top: -15px; font-size: 14px;">Powered by <a href="https://github.com/HeySinker/SinkerAI/tree/main/sinker-main" target="_blank">Sinker.js</a></p>
+        <p class="launch-auth-popup-footnote">By clicking "Continue" you agree to our <a href="https://www.deepsinker.com/dev/" target="_blank">Terms of Service</a></p>
     </div>
 </dialog>
 
