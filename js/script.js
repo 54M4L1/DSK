@@ -44,13 +44,12 @@ window.onload = () => {
                 walletStatus.style.zIndex = '9999';                  
                 walletStatus.style.fontFamily = 'Poppins, sans-serif'; 
 
-                // Hide the status after 2 seconds
-                setTimeout(() => {
-                    walletStatus.style.display = 'none';
-                }, 15000);
-            } else {
-                console.error('❌ Wallet status element not found!');
-            }
+                    document.addEventListener('click', function(event) {
+        if (!walletStatus.contains(event.target)) {
+            walletStatus.style.display = 'none';
+        }
+    });
+}
 
             connectButton.textContent = 'Connected';
             connectButton.classList.add('connected');
