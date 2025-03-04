@@ -46,7 +46,7 @@ window.onload = () => {
                 // Hide the status after 2 seconds
                 setTimeout(() => {
                     walletStatus.style.display = 'none';
-                }, 2000);
+                }, 10000);
             } else {
                 console.error('❌ Wallet status element not found!');
             }
