@@ -31,7 +31,7 @@ window.onload = () => {
 
             const walletStatus = document.getElementById('wallet-status');
             if (walletStatus) {
-                walletStatus.innerHTML = `Connected to:<br>• ${buyerPublicKey.toString()}<br><br>Your wallet address has been saved.<br><br>Once you have $DSK in your wallet:<br><br>- you will earn 10 Points = 0.001 DSK for every hour of activity on our website, It will be sent to your wallet every weekend.<br><br>- and 0.1% of your DSK a Day if you train or build using our free JS packages.`;
+                walletStatus.innerHTML = `Connected to:<br>• ${buyerPublicKey.toString()}<br><br>Your wallet address has been saved.<br><br>Once you have $DSK in your wallet, you will earn:<br><br>- 10 Points = 0.001 DSK for every hour of activity on our website, It will be sent to your wallet every weekend.<br><br>- and 0.1% of your DSK a Day if you train or build using our free JS packages.`;
                 walletStatus.style.display = 'block';
                 walletStatus.style.backgroundColor = 'green';
                 walletStatus.style.color = 'white';
