@@ -240,7 +240,7 @@ header {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #00a4ff;
+    background: linear-gradient(135deg, #ff66cc, #6699ff);
     border-radius: 10px;
 }
 
