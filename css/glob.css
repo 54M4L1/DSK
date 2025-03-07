@@ -230,17 +230,17 @@ header {
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+    width: 3px;
+    height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #4c4c4c;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #ff66cc, #6699ff);
+background: linear-gradient(45deg, #2067dd, #ff00a5);
     border-radius: 10px;
 }
 
